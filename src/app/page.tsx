@@ -13,8 +13,8 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import StakingForm from "@/components/staking-form";
 import DeFiVaultForm from "@/components/defi-vault-form";
-import RocketIcon from "@/components/icons/rocket";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import BitcoinLogo from "@/components/icons/bitcoin-logo";
 
 const liquidStakingImage = PlaceHolderImages.find(
   (p) => p.id === "liquid-staking"
@@ -46,7 +46,7 @@ export default function Home() {
               </div>
             </div>
             <div className="relative flex h-full min-h-[300px] w-full items-center justify-center lg:min-h-[400px]">
-              <RocketIcon className="h-auto w-full max-w-sm drop-shadow-[0_0_30px_hsl(var(--primary)/0.4)] md:max-w-md lg:max-w-lg" />
+              <BitcoinLogo className="h-auto w-full max-w-sm animate-glow md:max-w-md lg:max-w-lg" />
             </div>
           </div>
         </section>
