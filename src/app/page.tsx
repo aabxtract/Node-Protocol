@@ -46,7 +46,7 @@ export default function Home() {
             </div>
             <div
               className="relative flex h-full min-h-[300px] w-full items-center justify-center lg:min-h-[400px]"
-              style={{ gap: "250px" }}
+              style={{ gap: "50px" }}
             >
               <Image
                 src="/stacks-stx-logo.png"
