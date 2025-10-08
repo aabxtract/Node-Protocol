@@ -1,3 +1,16 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "liquid-staking",
+      "description": "Abstract visualization of liquid staking tokens flowing through DeFi protocols.",
+      "imageUrl": "https://picsum.photos/seed/liquid/600/400",
+      "imageHint": "abstract crypto"
+    },
+    {
+      "id": "node-staking",
+      "description": "A network of interconnected nodes representing a decentralized blockchain.",
+      "imageUrl": "https://picsum.photos/seed/node/600/400",
+      "imageHint": "network nodes"
+    }
+  ]
 }
