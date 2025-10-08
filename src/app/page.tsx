@@ -53,14 +53,14 @@ export default function Home() {
                 alt="Stacks STX Logo"
                 width={250}
                 height={250}
-                className="h-auto w-auto z-10 animate-glow"
+                className="h-auto w-auto z-10 animate-glow-blue"
               />
               <Image
                 src="/bitcoin-btc-logo.png"
                 alt="Bitcoin BTC Logo"
                 width={250}
                 height={250}
-                className="h-auto w-auto -ml-16"
+                className="h-auto w-auto -ml-16 animate-glow-orange"
               />
             </div>
           </div>

@@ -88,15 +88,20 @@ export default {
             height: '0',
           },
         },
-        glow: {
+        'glow-blue': {
           '0%, 100%': { filter: 'drop-shadow(0 0 10px hsl(217.2 91.2% 59.8% / 0.4))' },
           '50%': { filter: 'drop-shadow(0 0 15px hsl(217.2 91.2% 59.8% / 0.5))' },
+        },
+        'glow-orange': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 10px hsl(25 95% 53% / 0.4))' },
+          '50%': { filter: 'drop-shadow(0 0 15px hsl(25 95% 53% / 0.5))' },
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'glow': 'glow 4s ease-in-out infinite',
+        'glow-blue': 'glow-blue 4s ease-in-out infinite',
+        'glow-orange': 'glow-orange 4s ease-in-out infinite',
       },
     },
   },
