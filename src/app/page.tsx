@@ -44,7 +44,10 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative flex h-full min-h-[300px] w-full items-center justify-center lg:min-h-[400px]">
+            <div
+              className="relative flex h-full min-h-[300px] w-full items-center justify-center lg:min-h-[400px]"
+              style={{ gap: "250px" }}
+            >
               <Image
                 src="/stacks-stx-logo.png"
                 alt="Stacks STX Logo"
@@ -57,7 +60,7 @@ export default function Home() {
                 alt="Bitcoin BTC Logo"
                 width={150}
                 height={150}
-                className="h-auto w-auto absolute -mt-8"
+                className="h-auto w-auto"
               />
             </div>
           </div>
