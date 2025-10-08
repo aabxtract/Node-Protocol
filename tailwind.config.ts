@@ -89,8 +89,8 @@ export default {
           },
         },
         glow: {
-          '0%, 100%': { filter: 'drop-shadow(0 0 10px hsl(var(--primary)/0.4))' },
-          '50%': { filter: 'drop-shadow(0 0 15px hsl(var(--primary)/0.5))' },
+          '0%, 100%': { filter: 'drop-shadow(0 0 10px hsl(217.2 91.2% 59.8% / 0.4))' },
+          '50%': { filter: 'drop-shadow(0 0 15px hsl(217.2 91.2% 59.8% / 0.5))' },
         }
       },
       animation: {
