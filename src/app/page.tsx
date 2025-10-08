@@ -14,7 +14,7 @@ import Footer from "@/components/footer";
 import StakingForm from "@/components/staking-form";
 import DeFiVaultForm from "@/components/defi-vault-form";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import BitcoinLogo from "@/components/icons/bitcoin-logo";
+import StacksLogo from "@/components/icons/stacks-logo";
 
 const liquidStakingImage = PlaceHolderImages.find(
   (p) => p.id === "liquid-staking"
@@ -46,7 +46,7 @@ export default function Home() {
               </div>
             </div>
             <div className="relative flex h-full min-h-[300px] w-full items-center justify-center lg:min-h-[400px]">
-              <BitcoinLogo className="h-auto w-full max-w-sm animate-glow md:max-w-md lg:max-w-lg" />
+              <StacksLogo className="h-auto w-full max-w-sm animate-glow md:max-w-md lg:max-w-lg" />
             </div>
           </div>
         </section>
