@@ -48,9 +48,9 @@ export default function Home() {
               <Image
                 src="/stacks-stx-logo.png"
                 alt="Stacks STX Logo"
-                width={210}
-                height={210}
-                className="h-auto w-full max-w-xs animate-glow md:max-w-sm lg:max-w-md"
+                width={150}
+                height={150}
+                className="h-auto w-auto animate-glow"
               />
             </div>
           </div>
