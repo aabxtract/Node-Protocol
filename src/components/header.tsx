@@ -16,22 +16,24 @@ export default function Header() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
             <Logo className="h-8 w-8 text-primary" />
-            <span className="font-headline text-lg font-bold">
+            <span className="hidden sm:inline-block font-headline text-lg font-bold">
               Node Protocol
             </span>
           </Link>
-          <nav className="hidden items-center gap-6 text-sm md:flex">
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={label}
-                href={href}
-                className="text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
         </div>
+
+        <nav className="hidden items-center gap-6 text-sm md:flex">
+          {navLinks.map(({ href, label }) => (
+            <Link
+              key={label}
+              href={href}
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
         <div className="flex items-center gap-4">
           <Button>Connect Wallet</Button>
         </div>
