@@ -191,7 +191,7 @@ export default function DeFiVaultForm() {
                             <RadioGroupItem value="low" />
                           </FormControl>
                           <FormLabel className="font-normal">
-                            🛡️ Low Risk (Stable returns)
+                            Low Risk (Stable returns)
                           </FormLabel>
                         </FormItem>
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -199,7 +199,7 @@ export default function DeFiVaultForm() {
                             <RadioGroupItem value="medium" />
                           </FormControl>
                           <FormLabel className="font-normal">
-                            💎 Medium Risk (Balanced growth)
+                            Medium Risk (Balanced growth)
                           </FormLabel>
                         </FormItem>
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -207,7 +207,7 @@ export default function DeFiVaultForm() {
                             <RadioGroupItem value="high" />
                           </FormControl>
                           <FormLabel className="font-normal">
-                            🔥 High Risk (Maximum yield)
+                            High Risk (Maximum yield)
                           </FormLabel>
                         </FormItem>
                       </RadioGroup>
