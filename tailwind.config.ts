@@ -112,7 +112,7 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'glow-blue': 'glow-blue 4s ease-in-out infinite',
         'glow-orange': 'glow-orange 4s ease-in-out infinite',
-        'bounce': 'bounce 1s infinite',
+        'bounce': 'bounce 300ms infinite',
         'bounce-delay': 'bounce 1s infinite -0.5s',
       },
     },
