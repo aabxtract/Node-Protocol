@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Zap } from "lucide-react";
+import { Loader2, Zap, Shield, Gem, Flame } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -28,10 +28,12 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import {
   getDeFiVaultRecommendation,
-  type DeFiVaultRecommendationInput,
   type DeFiVaultRecommendationOutput,
 } from "@/ai/flows/defi-vault-recommendation";
 import { Skeleton } from "./ui/skeleton";
+import { cn } from "@/lib/utils";
+
+type RiskLevel = "low" | "medium" | "high";
 
 const formSchema = z.object({
   riskPreference: z.enum(["low", "medium", "high"], {
@@ -41,6 +43,33 @@ const formSchema = z.object({
     .number({ invalid_type_error: "Please enter a valid number." })
     .positive({ message: "Staking amount must be positive." }),
 });
+
+const VAULT_CONFIG = {
+  low: {
+    name: "Low Risk Vault",
+    icon: Shield,
+    color: "hsl(var(--vault-low))",
+    textColor: "text-green-400",
+    borderColor: "border-green-500/50",
+    glowColor: "shadow-[0_0_15px_2px_hsl(var(--vault-low))]",
+  },
+  medium: {
+    name: "Medium Risk Vault",
+    icon: Gem,
+    color: "hsl(var(--vault-medium))",
+    textColor: "text-blue-400",
+    borderColor: "border-blue-500/50",
+    glowColor: "shadow-[0_0_15px_2px_hsl(var(--vault-medium))]",
+  },
+  high: {
+    name: "High Risk Vault",
+    icon: Flame,
+    color: "hsl(var(--vault-high))",
+    textColor: "text-orange-400",
+    borderColor: "border-orange-500/50",
+    glowColor: "shadow-[0_0_15px_2px_hsl(var(--vault-high))]",
+  },
+};
 
 export default function DeFiVaultForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -56,22 +85,86 @@ export default function DeFiVaultForm() {
     },
   });
 
+  function getVaultRecommendation(
+    amount: number,
+    risk: RiskLevel
+  ): { recommendedRisk: RiskLevel; message: string; isMatch: boolean } {
+    let recommendedRisk: RiskLevel;
+    let message: string;
+    let isMatch = false;
+
+    if (amount <= 100) {
+      recommendedRisk = "high";
+      message =
+        "Since your stake is relatively small, the High Risk Vault may offer better short-term yield potential.";
+    } else if (amount > 100 && amount <= 1000) {
+      recommendedRisk = "medium";
+      message =
+        "A balanced vault suits your stake size — steady growth with manageable volatility.";
+    } else {
+      // amount > 1000
+      recommendedRisk = "low";
+      message =
+        "For higher stakes, the Low Risk Vault ensures consistent returns with minimal fluctuation.";
+    }
+
+    if (recommendedRisk === risk) {
+      isMatch = true;
+      message = `Perfect match! The ${VAULT_CONFIG[risk].name} you selected aligns with your stake and strategy.`;
+    }
+
+    return { recommendedRisk, message, isMatch };
+  }
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     setRecommendation(null);
+
+    const { recommendedRisk, message, isMatch } = getVaultRecommendation(
+      values.stakingAmount,
+      values.riskPreference as RiskLevel
+    );
+
+    const vaultConfig = VAULT_CONFIG[recommendedRisk];
+    const Icon = vaultConfig.icon;
+
+    toast({
+      duration: 5000,
+      className: cn(
+        "bg-card/80 backdrop-blur-sm border-2",
+        vaultConfig.borderColor,
+        vaultConfig.glowColor
+      ),
+      title: (
+        <div className="flex items-center gap-2">
+          <Icon className={cn("h-5 w-5", vaultConfig.textColor)} />
+          <span className={cn("font-bold", vaultConfig.textColor)}>
+            {isMatch
+              ? `Perfect Match: ${vaultConfig.name}`
+              : `Recommended Vault: ${vaultConfig.name}`}
+          </span>
+        </div>
+      ),
+      description: <p className="text-muted-foreground">{message}</p>,
+      action: (
+        <Button
+          variant="link"
+          className={cn("text-base", vaultConfig.textColor)}
+        >
+          Explore Vaults
+        </Button>
+      ),
+    });
+
     try {
       const result = await getDeFiVaultRecommendation({
-        riskPreference: values.riskPreference,
+        riskPreference: recommendedRisk,
         ethStakingAmount: values.stakingAmount,
-      } as DeFiVaultRecommendationInput);
+      });
       setRecommendation(result);
     } catch (error) {
       console.error("Error getting recommendation:", error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to get a recommendation. Please try again.",
-      });
+      // We can still show the local recommendation even if the AI fails.
     } finally {
       setIsLoading(false);
     }
@@ -108,7 +201,7 @@ export default function DeFiVaultForm() {
                           <RadioGroupItem value="low" />
                         </FormControl>
                         <FormLabel className="font-normal">
-                          Low Risk (Stable returns)
+                          🛡️ Low Risk (Stable returns)
                         </FormLabel>
                       </FormItem>
                       <FormItem className="flex items-center space-x-3 space-y-0">
@@ -116,7 +209,7 @@ export default function DeFiVaultForm() {
                           <RadioGroupItem value="medium" />
                         </FormControl>
                         <FormLabel className="font-normal">
-                          Medium Risk (Balanced growth)
+                          💎 Medium Risk (Balanced growth)
                         </FormLabel>
                       </FormItem>
                       <FormItem className="flex items-center space-x-3 space-y-0">
@@ -124,7 +217,7 @@ export default function DeFiVaultForm() {
                           <RadioGroupItem value="high" />
                         </FormControl>
                         <FormLabel className="font-normal">
-                          High Risk (Maximum yield)
+                          🔥 High Risk (Maximum yield)
                         </FormLabel>
                       </FormItem>
                     </RadioGroup>
@@ -172,8 +265,8 @@ export default function DeFiVaultForm() {
       {(isLoading || recommendation) && (
         <div className="p-6 pt-0">
           <div className="rounded-lg border bg-background p-4">
-            <h4 className="mb-2 font-semibold">AI Recommendation:</h4>
-            {isLoading ? (
+            <h4 className="mb-2 font-semibold">AI Recommendation Details:</h4>
+            {isLoading && !recommendation ? (
               <div className="space-y-3">
                 <Skeleton className="h-5 w-1/3" />
                 <Skeleton className="h-4 w-full" />
