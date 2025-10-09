@@ -85,4 +85,18 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  .grid-background {
+    background-color: #000;
+    background-image:
+      linear-gradient(hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 40px 40px;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .grid-background > * {
+    position: relative;
+    z-index: 2;
+  }
 }
