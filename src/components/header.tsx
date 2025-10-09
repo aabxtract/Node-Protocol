@@ -19,7 +19,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2">
             <Logo className="h-8 w-8 text-primary" />
             <span className="font-headline text-lg font-bold">
-              EthLaunchpad
+              Node Protocol
             </span>
           </Link>
           <nav className="hidden items-center gap-6 text-sm md:flex">

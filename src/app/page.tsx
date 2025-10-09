@@ -180,7 +180,7 @@ export default function Home() {
                 </h3>
                 <p className="mt-2 opacity-90">
                   Your stake gives you a voice. Participate in governance
-                  proposals and direct the future of EthLaunchpad.
+                  proposals and direct the future of Node Protocol.
                 </p>
               </div>
               <div className="flex justify-start md:justify-end">
