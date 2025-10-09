@@ -32,8 +32,7 @@ export default function Home() {
                 Stake. Secure. Earn
               </h1>
               <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl">
-                Securely stake your ETH and earn rewards with our
-                state-of-the-art liquid staking and DeFi solutions.
+                Stake your STX, Power the Stacks network and Earn real Bitcoin.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button size="lg" className="w-full sm:w-auto">
