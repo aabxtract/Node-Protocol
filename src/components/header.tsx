@@ -4,7 +4,7 @@ import Logo from "@/components/icons/logo";
 
 const navLinks = [
   { href: "#", label: "Stake" },
-  { href: "#", label: "Liquid Staking" },
+  { href: "#", label: "Node Staking" },
   { href: "#", label: "DeFi" },
   { href: "#", label: "Governance" },
   { href: "#", label: "Protocol" },
