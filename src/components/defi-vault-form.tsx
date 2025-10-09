@@ -37,7 +37,7 @@ const formSchema = z.object({
   riskPreference: z.enum(["low", "medium", "high"], {
     required_error: "You need to select a risk preference.",
   }),
-  ethStakingAmount: z.coerce
+  stakingAmount: z.coerce
     .number({ invalid_type_error: "Please enter a valid number." })
     .positive({ message: "Staking amount must be positive." }),
 });
@@ -51,7 +51,7 @@ export default function DeFiVaultForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      ethStakingAmount: 1,
+      stakingAmount: 1,
       riskPreference: "medium",
     },
   });
@@ -60,9 +60,10 @@ export default function DeFiVaultForm() {
     setIsLoading(true);
     setRecommendation(null);
     try {
-      const result = await getDeFiVaultRecommendation(
-        values as DeFiVaultRecommendationInput
-      );
+      const result = await getDeFiVaultRecommendation({
+        riskPreference: values.riskPreference,
+        ethStakingAmount: values.stakingAmount,
+      } as DeFiVaultRecommendationInput);
       setRecommendation(result);
     } catch (error) {
       console.error("Error getting recommendation:", error);
@@ -134,17 +135,17 @@ export default function DeFiVaultForm() {
             />
             <FormField
               control={form.control}
-              name="ethStakingAmount"
+              name="stakingAmount"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    How much ETH are you planning to stake?
+                    How much STX are you planning to stake?
                   </FormLabel>
                   <FormControl>
                     <Input
                       type="number"
                       step="0.1"
-                      placeholder="e.g., 5"
+                      placeholder="e.g., 500"
                       {...field}
                     />
                   </FormControl>
