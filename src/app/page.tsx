@@ -90,7 +90,7 @@ export default function Home() {
                     <Activity className="h-6 w-6" />
                   </div>
                   <CardTitle className="font-headline text-2xl">
-                    Liquid Staking
+                    Long-run Vaults
                   </CardTitle>
                 </div>
               </CardHeader>
