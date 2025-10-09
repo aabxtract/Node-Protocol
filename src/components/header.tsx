@@ -22,7 +22,7 @@ export default function Header() {
           </Link>
         </div>
 
-        <nav className="hidden items-center gap-5 text-sm md:flex">
+        <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden items-center gap-10 text-sm md:flex">
           {navLinks.map(({ href, label }) => (
             <Link
               key={label}
