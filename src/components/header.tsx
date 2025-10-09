@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import Logo from "@/components/icons/logo";
 
 const navLinks = [
-  { href: "#", label: "Stake" },
-  { href: "#", label: "Node Staking" },
+  { href: "#", label: "Staking" },
   { href: "#", label: "Protocol" },
 ];
 
