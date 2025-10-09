@@ -185,7 +185,7 @@ export default function Home() {
                   variant="secondary"
                   className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
                 >
-                  Go to Governance
+                  Stake Now!
                   <Users className="ml-2 h-5 w-5" />
                 </Button>
               </div>
