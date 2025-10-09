@@ -129,9 +129,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="flex-grow space-y-4">
                 <p className="text-muted-foreground">
-                  For advanced users, run your own node and contribute directly
-                  to the network's security and decentralization, earning
-                  enhanced rewards.
+                  Node Staking lets you stake STX to help power active nodes in the Stacks ecosystem. Earn rewards while directly supporting the network’s security and decentralization
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center gap-2">
