@@ -5,8 +5,8 @@ export default function Logo(props: { className?: string }) {
     <Image
       src="/nodeprotocol.png"
       alt="Node Protocol Logo"
-      width={32}
-      height={32}
+      width={43}
+      height={43}
       className={props.className}
     />
   );
