@@ -95,6 +95,10 @@ export default {
         'glow-orange': {
           '0%, 100%': { filter: 'drop-shadow(0 0 10px hsl(25 95% 53% / 0.4))' },
           '50%': { filter: 'drop-shadow(0 0 15px hsl(25 95% 53% / 0.5))' },
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5%)' },
         }
       },
       animation: {
@@ -102,6 +106,8 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'glow-blue': 'glow-blue 4s ease-in-out infinite',
         'glow-orange': 'glow-orange 4s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'float-delay': 'float 6s ease-in-out infinite -3s',
       },
     },
   },
