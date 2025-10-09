@@ -6,7 +6,6 @@ const navLinks = [
   { href: "#", label: "Stake" },
   { href: "#", label: "Node Staking" },
   { href: "#", label: "Protocol" },
-  { href: "#", label: "Docs" },
 ];
 
 export default function Header() {
