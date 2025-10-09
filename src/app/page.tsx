@@ -96,9 +96,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="flex-grow space-y-4">
                 <p className="text-muted-foreground">
-                  Keep your assets liquid while earning staking rewards. Our
-                  liquid staking token (stETH) can be used across the DeFi
-                  ecosystem.
+                  Stake your STX for longer durations and unlock bigger rewards.
                 </p>
                 {liquidStakingImage && (
                   <div className="relative aspect-video w-full overflow-hidden rounded-lg">
