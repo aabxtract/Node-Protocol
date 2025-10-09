@@ -30,7 +30,7 @@ export default function StakingForm() {
             <p className="text-2xl font-bold">1,234,567</p>
           </div>
           <div>
-            <p className="text-sm text-muted-foreground">Staking APR</p>
+            <p className="text-sm text-muted-foreground">Staking PR</p>
             <p className="text-2xl font-bold text-primary">9.8%</p>
           </div>
         </div>
