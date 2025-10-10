@@ -1,5 +1,6 @@
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   Activity,
   ChevronRight,
@@ -39,8 +40,8 @@ export default function Home() {
                   Start Staking
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  Learn More
+                <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
+                  <Link href="#advanced-staking">Learn More</Link>
                 </Button>
               </div>
             </div>
@@ -72,7 +73,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-16 sm:py-24">
+        <section id="advanced-staking" className="container mx-auto scroll-mt-20 px-4 py-16 sm:py-24">
           <div className="mb-12 text-center">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl">
               Advanced Staking Ecosystem
