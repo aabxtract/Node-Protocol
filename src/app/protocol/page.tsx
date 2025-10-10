@@ -116,8 +116,7 @@ export default function ProtocolPage() {
               <CardContent>
                 <p className="text-muted-foreground">
                   We put users first with a simple interface, transparent
-                  rewards, and governance rights, allowing you to shape the
-                  protocol's future.
+                  rewards, allowing you to shape the protocol's future.
                 </p>
               </CardContent>
             </Card>
