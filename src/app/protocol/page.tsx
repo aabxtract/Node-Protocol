@@ -49,18 +49,17 @@ export default function ProtocolPage() {
                 </Button>
               </div>
             </div>
-            {protocolHeroImage && (
-              <div className="relative flex h-full min-h-[300px] w-full items-center justify-center lg:min-h-[400px]">
-                <Image
-                  src={protocolHeroImage.imageUrl}
-                  alt={protocolHeroImage.description}
-                  width={600}
-                  height={400}
-                  className="rounded-xl shadow-2xl shadow-primary/20"
-                  data-ai-hint={protocolHeroImage.imageHint}
-                />
-              </div>
-            )}
+            
+            <div className="relative flex h-full min-h-[300px] w-full items-center justify-center lg:min-h-[400px]">
+              <Image
+                src="/nodeprotocol.png"
+                alt="Node Protocol Logo"
+                width={400}
+                height={400}
+                className="rounded-xl shadow-2xl shadow-primary/20 animate-glow-blue"
+              />
+            </div>
+            
           </div>
         </section>
 
