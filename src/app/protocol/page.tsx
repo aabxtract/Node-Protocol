@@ -43,7 +43,7 @@ export default function ProtocolPage() {
                   className="w-full sm:w-auto"
                   asChild
                 >
-                  <Link href="https://docs.nodeprotocol.com" target="_blank">
+                  <Link href="https://docs.stacks.co" target="_blank">
                     Read the Docs
                   </Link>
                 </Button>
