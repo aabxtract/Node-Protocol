@@ -10,11 +10,11 @@ export default function Footer() {
           <Link href="/" className="flex items-center gap-2">
             <Logo className="h-8 w-8 text-primary" />
             <span className="font-headline text-lg font-bold">
-              EthLaunchpad
+              Node Protocol
             </span>
           </Link>
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} EthLaunchpad. All rights reserved.
+            &copy; {new Date().getFullYear()} Node Protocol. All rights reserved.
           </p>
         </div>
         <div className="flex items-center gap-4">

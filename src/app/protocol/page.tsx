@@ -27,8 +27,8 @@ export default function ProtocolPage() {
                 The Future of Decentralized Staking
               </h1>
               <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl">
-                EthLaunchpad is a decentralized protocol built to enhance the
-                utility of ETH through innovative staking solutions.
+                Node Protocol is a decentralized protocol built to enhance the
+                utility of STX through innovative staking solutions on the Bitcoin L2.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button size="lg" className="w-full sm:w-auto" asChild>
@@ -43,7 +43,7 @@ export default function ProtocolPage() {
                   className="w-full sm:w-auto"
                   asChild
                 >
-                  <Link href="https://docs.ethlaunchpad.com" target="_blank">
+                  <Link href="https://docs.nodeprotocol.com" target="_blank">
                     Read the Docs
                   </Link>
                 </Button>
@@ -71,7 +71,7 @@ export default function ProtocolPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
               Our vision is to create a more secure, decentralized, and
-              accessible financial ecosystem powered by Ethereum. We empower
+              accessible financial ecosystem powered by Stacks on Bitcoin. We empower
               users to participate in network security and earn rewards without
               sacrificing liquidity.
             </p>
@@ -92,7 +92,7 @@ export default function ProtocolPage() {
                 <p className="text-muted-foreground">
                   To provide a seamless and rewarding staking experience that
                   contributes to the long-term growth and stability of the
-                  Ethereum network.
+                  Stacks network on Bitcoin.
                 </p>
               </CardContent>
             </Card>
@@ -109,7 +109,7 @@ export default function ProtocolPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  EthLaunchpad strengthens the entire DeFi space by offering
+                  Node Protocol strengthens the entire DeFi space by offering
                   liquid staking derivatives that can be used across various
                   protocols, increasing capital efficiency.
                 </p>
@@ -140,11 +140,11 @@ export default function ProtocolPage() {
         <section className="container mx-auto px-4 py-16 sm:py-24">
           <div className="text-center">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl">
-              Join the Launch
+              Join the Movement
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
               Become part of a growing community dedicated to building the
-              future of finance on Ethereum.
+              future of finance on Stacks and Bitcoin.
             </p>
             <Button size="lg" className="mt-8">
               Join our Community

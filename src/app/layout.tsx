@@ -3,8 +3,8 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "EthLaunchpad",
-  description: "The premier platform for ETH staking and DeFi.",
+  title: "Node Protocol",
+  description: "The premier platform for STX staking and the Bitcoin L2 ecosystem.",
 };
 
 export default function RootLayout({

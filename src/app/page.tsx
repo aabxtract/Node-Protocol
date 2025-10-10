@@ -33,7 +33,7 @@ export default function Home() {
                 Stake. Secure. Earn
               </h1>
               <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl">
-                Stake your ETH, secure the network, and earn rewards with EthLaunchpad.
+                Stake your STX, secure the Bitcoin L2, and earn rewards with Node Protocol.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button size="lg" className="w-full sm:w-auto">
@@ -50,15 +50,15 @@ export default function Home() {
               style={{ gap: "0px" }}
             >
               <Image
-                src="/ethereum-eth-logo.png"
-                alt="Ethereum ETH Logo"
+                src="/stacks-stx-logo.png"
+                alt="Stacks STX Logo"
                 width={250}
                 height={250}
                 className="h-auto w-auto z-10 animate-glow-blue transition-transform duration-200 hover:animate-bounce"
               />
               <Image
-                src="/rocket-logo.png"
-                alt="Rocket Logo"
+                src="/bitcoin-btc-logo.png"
+                alt="Bitcoin BTC Logo"
                 width={250}
                 height={250}
                 className="h-auto w-auto -ml-16 animate-glow-orange transition-transform duration-200 hover:animate-bounce"
@@ -97,7 +97,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="flex-grow space-y-4">
                 <p className="text-muted-foreground">
-                  Maintain liquidity while your ETH is staked. Use your staked assets across DeFi without unstaking.
+                  Maintain liquidity while your STX is staked. Use your staked assets across DeFi without unstaking.
                 </p>
                 {liquidStakingImage && (
                   <div className="relative aspect-video w-full overflow-hidden rounded-lg">
@@ -130,7 +130,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="flex-grow space-y-4">
                 <p className="text-muted-foreground">
-                  Node Staking lets you stake ETH to help power active nodes in the ecosystem. Earn rewards while directly supporting the network’s security and decentralization.
+                  Node Staking lets you stake STX to help power active nodes in the ecosystem. Earn rewards while directly supporting the network’s security and decentralization.
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center gap-2">
@@ -176,7 +176,7 @@ export default function Home() {
                   Shape the Future of the Protocol
                 </h3>
                 <p className="mt-2 opacity-90">
-                  Stake your ETH, be a major contributor to the Ethereum ecosystem and empower the EthLaunchpad protocol.
+                  Stake your Stacks. Be a major contributor to the Bitcoin and Stacks ecosystem and empower Node protocol
                 </p>
               </div>
               <div className="flex justify-start md:justify-end">

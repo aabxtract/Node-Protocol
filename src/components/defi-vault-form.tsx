@@ -222,13 +222,13 @@ export default function DeFiVaultForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      How much ETH are you planning to stake?
+                      How much STX are you planning to stake?
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         step="0.1"
-                        placeholder="e.g., 10"
+                        placeholder="e.g., 100"
                         {...field}
                       />
                     </FormControl>

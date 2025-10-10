@@ -17,16 +17,16 @@ export default function StakingForm() {
   return (
     <Card className="w-full shadow-2xl shadow-primary/10">
       <CardHeader>
-        <CardTitle className="font-headline text-2xl">Stake your ETH</CardTitle>
+        <CardTitle className="font-headline text-2xl">Stake your STX</CardTitle>
         <CardDescription>
-          Enter the amount of ETH you want to stake and start earning rewards
+          Enter the amount of STX you want to stake and start earning rewards
           instantly.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="grid grid-cols-2 gap-4 text-center">
           <div>
-            <p className="text-sm text-muted-foreground">Total ETH Staked</p>
+            <p className="text-sm text-muted-foreground">Total STX Staked</p>
             <p className="text-2xl font-bold">1,234,567</p>
           </div>
           <div>
@@ -47,7 +47,7 @@ export default function StakingForm() {
               className="h-14 pr-16 text-lg"
             />
             <div className="absolute inset-y-0 right-0 flex items-center pr-4">
-              <span className="font-bold text-muted-foreground">ETH</span>
+              <span className="font-bold text-muted-foreground">STX</span>
             </div>
           </div>
         </div>
