@@ -56,7 +56,7 @@ export default function ProtocolPage() {
                 alt="Node Protocol Logo"
                 width={400}
                 height={400}
-                className="rounded-xl shadow-2xl shadow-primary/20"
+                className="rounded-xl"
               />
             </div>
             
