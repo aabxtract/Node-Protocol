@@ -1,13 +1,5 @@
-import Image from 'next/image';
+import { Rocket } from 'lucide-react';
 
 export default function Logo(props: { className?: string }) {
-  return (
-    <Image
-      src="/nodeprotocol.png"
-      alt="Node Protocol Logo"
-      width={86}
-      height={86}
-      className={props.className}
-    />
-  );
+  return <Rocket {...props} />;
 }

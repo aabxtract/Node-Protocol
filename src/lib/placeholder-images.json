@@ -3,7 +3,7 @@
     {
       "id": "liquid-staking",
       "description": "Abstract visualization of liquid staking tokens flowing through DeFi protocols.",
-      "imageUrl": "/—Pngtree—glossy 3d safe vault icon_21998388.png",
+      "imageUrl": "https://picsum.photos/seed/liquid/600/400",
       "imageHint": "abstract crypto"
     },
     {
@@ -11,6 +11,12 @@
       "description": "A network of interconnected nodes representing a decentralized blockchain.",
       "imageUrl": "https://picsum.photos/seed/node/600/400",
       "imageHint": "network nodes"
+    },
+    {
+      "id": "protocol-hero",
+      "description": "A futuristic rocket launching into a stylized digital cosmos, representing the launch of a new protocol.",
+      "imageUrl": "https://picsum.photos/seed/protocol/600/400",
+      "imageHint": "rocket launch"
     }
   ]
 }

@@ -33,7 +33,7 @@ export default function Home() {
                 Stake. Secure. Earn
               </h1>
               <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl">
-                Stake your STX, Power the Stacks network and Earn real Bitcoin.
+                Stake your ETH, secure the network, and earn rewards with EthLaunchpad.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button size="lg" className="w-full sm:w-auto">
@@ -50,15 +50,15 @@ export default function Home() {
               style={{ gap: "0px" }}
             >
               <Image
-                src="/stacks-stx-logo.png"
-                alt="Stacks STX Logo"
+                src="/ethereum-eth-logo.png"
+                alt="Ethereum ETH Logo"
                 width={250}
                 height={250}
                 className="h-auto w-auto z-10 animate-glow-blue transition-transform duration-200 hover:animate-bounce"
               />
               <Image
-                src="/bitcoin-btc-logo.png"
-                alt="Bitcoin BTC Logo"
+                src="/rocket-logo.png"
+                alt="Rocket Logo"
                 width={250}
                 height={250}
                 className="h-auto w-auto -ml-16 animate-glow-orange transition-transform duration-200 hover:animate-bounce"
@@ -91,13 +91,13 @@ export default function Home() {
                     <Activity className="h-6 w-6" />
                   </div>
                   <CardTitle className="font-headline text-2xl">
-                    Long-run Vaults
+                    Liquid Staking
                   </CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="flex-grow space-y-4">
                 <p className="text-muted-foreground">
-                  Stake your STX for longer durations and unlock bigger rewards.
+                  Maintain liquidity while your ETH is staked. Use your staked assets across DeFi without unstaking.
                 </p>
                 {liquidStakingImage && (
                   <div className="relative aspect-video w-full overflow-hidden rounded-lg">
@@ -111,7 +111,7 @@ export default function Home() {
                   </div>
                 )}
                 <Button variant="link" className="px-0">
-                  Explore Long-run vaults
+                  Explore Liquid Staking
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
@@ -130,7 +130,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="flex-grow space-y-4">
                 <p className="text-muted-foreground">
-                  Node Staking lets you stake STX to help power active nodes in the Stacks ecosystem. Earn rewards while directly supporting the network’s security and decentralization
+                  Node Staking lets you stake ETH to help power active nodes in the ecosystem. Earn rewards while directly supporting the network’s security and decentralization.
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center gap-2">
@@ -176,7 +176,7 @@ export default function Home() {
                   Shape the Future of the Protocol
                 </h3>
                 <p className="mt-2 opacity-90">
-                  Stake your Stacks. Be a major contributor to the Bitcoin and Stacks ecosystem and empower Node protocol
+                  Stake your ETH, be a major contributor to the Ethereum ecosystem and empower the EthLaunchpad protocol.
                 </p>
               </div>
               <div className="flex justify-start md:justify-end">

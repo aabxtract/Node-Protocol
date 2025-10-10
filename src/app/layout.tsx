@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Node Protocol",
+  title: "EthLaunchpad",
   description: "The premier platform for ETH staking and DeFi.",
 };
 

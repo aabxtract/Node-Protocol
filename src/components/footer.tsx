@@ -8,13 +8,13 @@ export default function Footer() {
       <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 py-8 sm:flex-row">
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <Link href="/" className="flex items-center gap-2">
-            <Logo className="h-8 w-8" />
+            <Logo className="h-8 w-8 text-primary" />
             <span className="font-headline text-lg font-bold">
-              Node Protocol
+              EthLaunchpad
             </span>
           </Link>
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Node Protocol. All rights reserved.
+            &copy; {new Date().getFullYear()} EthLaunchpad. All rights reserved.
           </p>
         </div>
         <div className="flex items-center gap-4">

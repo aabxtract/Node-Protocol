@@ -222,13 +222,13 @@ export default function DeFiVaultForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      How much STX are you planning to stake?
+                      How much ETH are you planning to stake?
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         step="0.1"
-                        placeholder="e.g., 500"
+                        placeholder="e.g., 10"
                         {...field}
                       />
                     </FormControl>
@@ -251,34 +251,6 @@ export default function DeFiVaultForm() {
             </CardFooter>
           </form>
         </Form>
-
-        {(isLoading || recommendation) && !dialogData && (
-          <div className="p-6 pt-0">
-            <div className="rounded-lg border bg-background p-4">
-              <h4 className="mb-2 font-semibold">AI Recommendation Details:</h4>
-              {isLoading && !recommendation ? (
-                <div className="space-y-3">
-                  <Skeleton className="h-5 w-1/3" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-4/5" />
-                </div>
-              ) : recommendation ? (
-                <div className="space-y-2">
-                  <h5 className="flex items-center gap-2 text-xl font-bold text-primary">
-                    <Zap className="h-5 w-5" />
-                    {recommendation.vaultName}
-                  </h5>
-                  <p className="font-mono text-lg font-semibold">
-                    {recommendation.apy}% APY
-                  </p>
-                  <p className="text-muted-foreground">
-                    {recommendation.description}
-                  </p>
-                </div>
-              ) : null}
-            </div>
-          </div>
-        )}
       </Card>
       {dialogData && vaultConfig && Icon && (
         <AlertDialog open={!!dialogData} onOpenChange={() => setDialogData(null)}>
