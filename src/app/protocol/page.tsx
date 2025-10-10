@@ -97,9 +97,8 @@ export default function ProtocolPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Node Protocol strengthens the entire DeFi space by offering
-                  liquid staking derivatives that can be used across various
-                  protocols, increasing capital efficiency.
+                  Node Protocol contributes to stacks DeFi space by offering
+                  different staking derivatives, increasing capital efficiency
                 </p>
               </CardContent>
             </Card>
