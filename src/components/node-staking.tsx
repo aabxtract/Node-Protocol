@@ -20,11 +20,25 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
 export default function NodeStaking() {
   const [stakeAmount, setStakeAmount] = useState('1');
+  const [stakingPeriod, setStakingPeriod] = useState('7');
   const stxPrice = 0.6;
   const receivedAmount = 0.95;
+
+  const getRewardForPeriod = (period: string) => {
+    switch (period) {
+      case '7': return 2;
+      case '15': return 3;
+      case '30': return 4;
+      default: return 2;
+    }
+  };
+  const currentReward = getRewardForPeriod(stakingPeriod);
+  const nodePowerReceived = parseFloat(stakeAmount || '0') * receivedAmount;
+
 
   return (
     <Card className="w-full mt-4">
@@ -71,20 +85,37 @@ export default function NodeStaking() {
           </Button>
         </div>
 
-        {/* Receive Section */}
+        {/* Staking Period Section */}
         <div className="rounded-lg border bg-card p-4 space-y-3 -mt-3">
+           <div className="space-y-2">
+            <Label htmlFor="staking-period">Choose staking period</Label>
+            <Select onValueChange={setStakingPeriod} defaultValue={stakingPeriod}>
+              <SelectTrigger id="staking-period" className="w-full">
+                <SelectValue placeholder="Select a period" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="7">7 Days (2% Reward)</SelectItem>
+                <SelectItem value="15">15 Days (3% Reward)</SelectItem>
+                <SelectItem value="30">30 Days (4% Reward)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        {/* Receive Section */}
+        <div className="rounded-lg border bg-card p-4 space-y-3">
           <div className="flex justify-between items-center text-sm">
-            <Label>Receive Node Power</Label>
+            <Label>Receive Node Power (est.)</Label>
             <span className="text-muted-foreground">Current Power: 0</span>
           </div>
           <div className="relative">
             <div className="h-12 pr-4 flex items-center text-xl font-mono w-full">
-              {(parseFloat(stakeAmount || '0') * receivedAmount).toFixed(4)}
+              {nodePowerReceived.toFixed(4)}
             </div>
           </div>
            <div className="text-right text-sm text-muted-foreground">
             ≈ ${' '}
-            {(parseFloat(stakeAmount || '0') * stxPrice * 0.998).toLocaleString('en-US', {
+            {(nodePowerReceived * stxPrice / receivedAmount).toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -107,12 +138,12 @@ export default function NodeStaking() {
           <AccordionItem value="item-2" className="border-b-0">
             <AccordionTrigger className="py-2 text-sm hover:no-underline">
               <div className="flex justify-between w-full">
-                <span>Node Reward APR</span>
-                <span className="font-mono pr-4 text-primary">≈ 5.5%</span>
+                <span>Node Reward</span>
+                <span className="font-mono pr-4 text-primary">≈ {currentReward}%</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="px-4 text-muted-foreground text-xs">
-              Estimated annual return for staking on a node.
+              Estimated reward for the selected staking period.
             </AccordionContent>
           </AccordionItem>
           <Separator className="my-2" />
