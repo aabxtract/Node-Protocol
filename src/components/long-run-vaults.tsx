@@ -5,6 +5,7 @@ import {
   AlertTriangle,
   ArrowDownUp,
   ChevronDown,
+  Loader2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -24,32 +25,181 @@ import {
 } from '@/components/ui/accordion';
 import Link from 'next/link';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { openContractCall } from '@stacks/connect';
+import { 
+  uintCV, 
+  standardPrincipalCV,
+  PostConditionMode,
+  createSTXPostCondition,
+  FungibleConditionCode 
+} from '@stacks/transactions';
+import { StacksTestnet } from '@stacks/network';
+
+// Contract constants
+const LOCK_CONTRACT_ADDRESS = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+const LOCK_CONTRACT_NAME = 'lock';
+const FULL_CONTRACT_ID = `${LOCK_CONTRACT_ADDRESS}.${LOCK_CONTRACT_NAME}`;
+const NETWORK = new StacksTestnet();
 
 export default function LongRunVaults() {
-  const [stakeAmount, setStakeAmount] = useState('1');
+  const [stakeAmount, setStakeAmount] = useState('10');
   const [stakingDuration, setStakingDuration] = useState('3');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [lockPosition, setLockPosition] = useState<any>(null);
+  
   const stxPrice = 0.6;
   const receivedAmount = 0.873781;
 
   const getAprForDuration = (duration: string) => {
     switch (duration) {
       case '3':
-        return 2.45;
+        return 5.0;  // 5% APR for 3 months (from lock.clar reward-rate-3m u500)
       case '6':
-        return 3.15;
+        return 8.0;  // 8% APR for 6 months (from lock.clar reward-rate-6m u800)
       case '12':
-        return 4.25;
+        return 12.0; // 12% APR for 12 months (from lock.clar reward-rate-12m u1200)
       default:
-        return 2.45;
+        return 5.0;
     }
   };
 
   const currentApr = getAprForDuration(stakingDuration);
   const nStxReceived = parseFloat(stakeAmount || '0') * receivedAmount * (1 + currentApr/100 * (parseInt(stakingDuration)/12));
 
+  // Contract interaction functions
+  const handleLockStx = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      // Convert STX to microSTX (multiply by 1,000,000)
+      const amountInMicroStx = Math.floor(parseFloat(stakeAmount) * 1000000);
+      const months = parseInt(stakingDuration);
+      
+      console.log(`Calling lock-stx with amount: ${amountInMicroStx}, months: ${months}`);
+      console.log(`Contract: ${FULL_CONTRACT_ID}`);
+      
+      // Create post condition to ensure STX is transferred
+      const postConditions = [
+        createSTXPostCondition(
+          'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM', // Replace with actual user address
+          FungibleConditionCode.Equal,
+          amountInMicroStx
+        )
+      ];
+      
+      const txOptions = {
+        contractAddress: LOCK_CONTRACT_ADDRESS,
+        contractName: LOCK_CONTRACT_NAME,
+        functionName: 'lock-stx',
+        functionArgs: [
+          uintCV(amountInMicroStx),
+          uintCV(months)
+        ],
+        network: NETWORK,
+        postConditionMode: PostConditionMode.Deny,
+        postConditions,
+        onFinish: (data: any) => {
+          console.log('Transaction submitted:', data.txId);
+          alert(`Transaction submitted! TX ID: ${data.txId}`);
+          setIsLoading(false);
+        },
+        onCancel: () => {
+          console.log('Transaction cancelled');
+          setIsLoading(false);
+        }
+      };
+      
+      await openContractCall(txOptions);
+      
+    } catch (err) {
+      console.error('Transaction error:', err);
+      setError(err instanceof Error ? err.message : 'Transaction failed');
+      setIsLoading(false);
+    }
+  };
+
+  const handleClaimRewards = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      console.log(`Calling claim-rewards on contract: ${FULL_CONTRACT_ID}`);
+      
+      const txOptions = {
+        contractAddress: LOCK_CONTRACT_ADDRESS,
+        contractName: LOCK_CONTRACT_NAME,
+        functionName: 'claim-rewards',
+        functionArgs: [],
+        network: NETWORK,
+        postConditionMode: PostConditionMode.Allow,
+        onFinish: (data: any) => {
+          console.log('Claim rewards transaction submitted:', data.txId);
+          alert(`Claim transaction submitted! TX ID: ${data.txId}`);
+          setIsLoading(false);
+        },
+        onCancel: () => {
+          console.log('Claim transaction cancelled');
+          setIsLoading(false);
+        }
+      };
+      
+      await openContractCall(txOptions);
+      
+    } catch (err) {
+      console.error('Claim error:', err);
+      setError(err instanceof Error ? err.message : 'Claim failed');
+      setIsLoading(false);
+    }
+  };
+
+  const handleUnlockStx = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      console.log(`Calling unlock-stx on contract: ${FULL_CONTRACT_ID}`);
+      
+      const txOptions = {
+        contractAddress: LOCK_CONTRACT_ADDRESS,
+        contractName: LOCK_CONTRACT_NAME,
+        functionName: 'unlock-stx',
+        functionArgs: [],
+        network: NETWORK,
+        postConditionMode: PostConditionMode.Allow,
+        onFinish: (data: any) => {
+          console.log('Unlock transaction submitted:', data.txId);
+          alert(`Unlock transaction submitted! TX ID: ${data.txId}`);
+          setIsLoading(false);
+        },
+        onCancel: () => {
+          console.log('Unlock transaction cancelled');
+          setIsLoading(false);
+        }
+      };
+      
+      await openContractCall(txOptions);
+      
+    } catch (err) {
+      console.error('Unlock error:', err);
+      setError(err instanceof Error ? err.message : 'Unlock failed');
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Card className="w-full mt-4">
       <CardContent className="p-6 space-y-4">
+        {error && (
+          <div className="rounded-lg border border-destructive bg-destructive/10 p-3">
+            <div className="flex items-center text-destructive text-sm">
+              <AlertTriangle className="h-4 w-4 mr-2" />
+              {error}
+            </div>
+          </div>
+        )}
+        
         {/* Stake ETH Section */}
         <div className="rounded-lg border bg-card p-4 space-y-3">
           <div className="flex justify-between items-center text-sm">
@@ -63,7 +213,8 @@ export default function LongRunVaults() {
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
               className="h-12 pr-24 text-xl font-mono"
-              placeholder="0.0"
+              placeholder="10.0"
+              min="10"
             />
             <div className="absolute inset-y-0 right-0 flex items-center">
               <Button variant="ghost" size="sm" className="mr-2">Max</Button>
@@ -82,7 +233,7 @@ export default function LongRunVaults() {
           </div>
           <div className="flex items-center text-destructive text-sm">
             <AlertTriangle className="h-4 w-4 mr-2" />
-            Insufficient balance
+            {parseFloat(stakeAmount || '0') < 10 ? 'Minimum stake is 10 STX' : 'Insufficient balance'}
           </div>
         </div>
 
@@ -200,8 +351,22 @@ export default function LongRunVaults() {
         </Accordion>
       </CardContent>
       <CardFooter>
-        <Button size="lg" className="w-full py-6 text-lg">
-          Connect Wallet
+        <Button 
+          size="lg" 
+          className="w-full py-6 text-lg" 
+          disabled={parseFloat(stakeAmount || '0') < 10 || isLoading}
+          onClick={handleLockStx}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Processing...
+            </>
+          ) : parseFloat(stakeAmount || '0') < 10 ? (
+            'Minimum 10 STX Required'
+          ) : (
+            'Lock STX'
+          )}
         </Button>
       </CardFooter>
     </Card>
