@@ -44,10 +44,10 @@ export default function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem asChild>
-                <Link href="#">Long-run vaults</Link>
+                <Link href="/staking?type=long-run">Long-run vaults</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="#">Node Staking</Link>
+                <Link href="/staking?type=node">Node Staking</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
