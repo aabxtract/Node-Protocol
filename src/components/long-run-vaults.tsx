@@ -39,22 +39,12 @@ export default function LongRunVaults() {
             <span className="text-muted-foreground">Balance: 0.00 STX</span>
           </div>
           <div className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <svg
-                className="h-5 w-5 text-muted-foreground"
-                viewBox="0 0 32 32"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-              >
-                <path d="M15.92 24.1L8 19.432 15.92 32l7.92-12.568-7.92 4.668zM16.08 0L8 18.182l8.08 4.588 8.08-4.588L16.08 0z" />
-              </svg>
-            </div>
             <Input
               id="stake-eth"
               type="number"
               value={stakeAmount}
               onChange={(e) => setStakeAmount(e.target.value)}
-              className="h-12 pl-10 pr-24 text-xl font-mono"
+              className="h-12 pr-24 text-xl font-mono"
               placeholder="0.0"
             />
             <div className="absolute inset-y-0 right-0 flex items-center">
@@ -91,17 +81,7 @@ export default function LongRunVaults() {
             <span className="text-muted-foreground">Balance: 0.00 nSTX</span>
           </div>
           <div className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <svg
-                className="h-5 w-5 text-muted-foreground"
-                viewBox="0 0 32 32"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-              >
-                <path d="M15.92 24.1L8 19.432 15.92 32l7.92-12.568-7.92 4.668zM16.08 0L8 18.182l8.08 4.588 8.08-4.588L16.08 0z" />
-              </svg>
-            </div>
-            <div className="h-12 pl-10 pr-4 flex items-center text-xl font-mono w-full">
+            <div className="h-12 pr-4 flex items-center text-xl font-mono w-full">
               {receivedAmount.toFixed(6)}
             </div>
           </div>
