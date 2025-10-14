@@ -110,9 +110,11 @@ export default function Home() {
                     />
                   </div>
                 )}
-                <Button variant="link" className="px-0">
-                  Explore Liquid Staking
-                  <ChevronRight className="ml-2 h-4 w-4" />
+                <Button variant="link" className="px-0" asChild>
+                  <Link href="/staking?type=long-run">
+                    Explore Liquid Staking
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
