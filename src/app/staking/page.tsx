@@ -18,7 +18,7 @@ function StakingPageContent() {
       <main className="flex-1 grid-background">
         <section className="container mx-auto px-4 py-16 sm:py-24">
           <div className="mx-auto max-w-2xl">
-            <Tabs defaultValue={stakingType} className="w-full">
+            <Tabs defaultValue={stakingType} className="w-full" key={stakingType}>
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="long-run">Long-run Vaults</TabsTrigger>
                 <TabsTrigger value="node">Node Staking</TabsTrigger>
