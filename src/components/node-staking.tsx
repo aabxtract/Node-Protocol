@@ -23,7 +23,7 @@ import {
 
 export default function NodeStaking() {
   const [stakeAmount, setStakeAmount] = useState('1');
-  const stxPrice = 4485.8;
+  const stxPrice = 0.6;
   const receivedAmount = 0.95;
 
   return (

@@ -26,7 +26,7 @@ import Link from 'next/link';
 
 export default function LongRunVaults() {
   const [stakeAmount, setStakeAmount] = useState('1');
-  const ethPrice = 4485.8;
+  const stxPrice = 0.6;
   const receivedAmount = 0.873781;
 
   return (
@@ -63,7 +63,7 @@ export default function LongRunVaults() {
           </div>
           <div className="text-right text-sm text-muted-foreground">
             ≈ ${' '}
-            {(parseFloat(stakeAmount || '0') * ethPrice).toLocaleString(
+            {(parseFloat(stakeAmount || '0') * stxPrice).toLocaleString(
               'en-US',
               {
                 minimumFractionDigits: 2,
@@ -107,7 +107,7 @@ export default function LongRunVaults() {
           </div>
           <div className="text-right text-sm text-muted-foreground">
             ≈ ${' '}
-            {(receivedAmount * ethPrice * 1.002).toLocaleString('en-US', {
+            {(receivedAmount * stxPrice * 1.002).toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
