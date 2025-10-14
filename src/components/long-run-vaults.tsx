@@ -23,11 +23,29 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 
 export default function LongRunVaults() {
   const [stakeAmount, setStakeAmount] = useState('1');
+  const [stakingDuration, setStakingDuration] = useState('3');
   const stxPrice = 0.6;
   const receivedAmount = 0.873781;
+
+  const getAprForDuration = (duration: string) => {
+    switch (duration) {
+      case '3':
+        return 2.45;
+      case '6':
+        return 3.15;
+      case '12':
+        return 4.25;
+      default:
+        return 2.45;
+    }
+  };
+
+  const currentApr = getAprForDuration(stakingDuration);
+  const nStxReceived = parseFloat(stakeAmount || '0') * receivedAmount * (1 + currentApr/100 * (parseInt(stakingDuration)/12));
 
   return (
     <Card className="w-full mt-4">
@@ -74,57 +92,65 @@ export default function LongRunVaults() {
           </Button>
         </div>
 
-        {/* Receive rETH Section */}
+        {/* Staking Duration Section */}
         <div className="rounded-lg border bg-card p-4 space-y-3 -mt-3">
+          <Label>Select Staking Duration</Label>
+          <RadioGroup 
+            defaultValue="3" 
+            className="grid grid-cols-3 gap-2"
+            onValueChange={setStakingDuration}
+          >
+            <div>
+              <RadioGroupItem value="3" id="r1" className="peer sr-only" />
+              <Label
+                htmlFor="r1"
+                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              >
+                3 Months
+                <span className="text-xs text-primary mt-1">{getAprForDuration('3')}% APR</span>
+              </Label>
+            </div>
+            <div>
+              <RadioGroupItem value="6" id="r2" className="peer sr-only" />
+              <Label
+                htmlFor="r2"
+                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              >
+                6 Months
+                <span className="text-xs text-primary mt-1">{getAprForDuration('6')}% APR</span>
+              </Label>
+            </div>
+            <div>
+              <RadioGroupItem value="12" id="r3" className="peer sr-only" />
+              <Label
+                htmlFor="r3"
+                className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+              >
+                12 Months
+                <span className="text-xs text-primary mt-1">{getAprForDuration('12')}% APR</span>
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
+
+        {/* Receive nSTX Section */}
+        <div className="rounded-lg border bg-card p-4 space-y-3">
           <div className="flex justify-between items-center text-sm">
-            <Label>Receive nSTX</Label>
+            <Label>Receive nSTX (est.)</Label>
             <span className="text-muted-foreground">Balance: 0.00 nSTX</span>
           </div>
           <div className="relative">
             <div className="h-12 pr-4 flex items-center text-xl font-mono w-full">
-              {receivedAmount.toFixed(6)}
+              {nStxReceived.toFixed(6)}
             </div>
           </div>
           <div className="text-right text-sm text-muted-foreground">
             ≈ ${' '}
-            {(receivedAmount * stxPrice * 1.002).toLocaleString('en-US', {
+            {(nStxReceived * stxPrice * 1.002).toLocaleString('en-US', {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
             {' '}USD
-          </div>
-        </div>
-
-        {/* Routing Section */}
-        <div>
-          <div className="flex justify-between items-center text-sm mb-2">
-            <Label>Routing</Label>
-            <Link
-              href="#"
-              className="text-primary text-xs hover:underline"
-              onClick={(e) => e.preventDefault()}
-            >
-              What's the difference?
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="rounded-lg border-2 border-transparent bg-card/50 p-3 text-center text-sm">
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <div className="h-2 w-2 rounded-full bg-muted-foreground" />
-                <span>Protocol</span>
-              </div>
-              <p className="font-mono text-base">0.870948 nSTX</p>
-            </div>
-            <div className="rounded-lg border-2 border-green-500 bg-card/50 p-3 text-center text-sm relative">
-               <div className="absolute -top-3 right-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
-                0.32% better
-              </div>
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <div className="h-2 w-2 rounded-full bg-green-500" />
-                <span>CoW Swap</span>
-              </div>
-              <p className="font-mono text-base">0.873781 nSTX</p>
-            </div>
           </div>
         </div>
 
@@ -133,7 +159,7 @@ export default function LongRunVaults() {
             <AccordionTrigger className="py-2 text-sm hover:no-underline">
               <div className="flex justify-between w-full">
                 <span>Exchange Rate</span>
-                <span className="font-mono pr-4">1 STX ≈ 0.873781 nSTX</span>
+                <span className="font-mono pr-4">1 STX ≈ {receivedAmount} nSTX</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="px-4 text-muted-foreground text-xs">
@@ -143,12 +169,12 @@ export default function LongRunVaults() {
           <AccordionItem value="item-2" className="border-b-0">
             <AccordionTrigger className="py-2 text-sm hover:no-underline">
               <div className="flex justify-between w-full">
-                <span>Average Return</span>
-                <span className="font-mono pr-4 text-primary">≈ 2.45% APR</span>
+                <span>Selected Return</span>
+                <span className="font-mono pr-4 text-primary">≈ {currentApr}% APR</span>
               </div>
             </AccordionTrigger>
             <AccordionContent className="px-4 text-muted-foreground text-xs">
-              This is an estimated average return based on historical data.
+              This is an estimated average return based on historical data for the selected duration.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3" className="border-b-0">
@@ -162,21 +188,10 @@ export default function LongRunVaults() {
               The maximum price change you're willing to accept.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-4" className="border-b-0">
-            <AccordionTrigger className="py-2 text-sm hover:no-underline">
-              <div className="flex justify-between w-full">
-                <span>Order Expiry</span>
-                <span className="font-mono pr-4">30 minutes</span>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent className="px-4 text-muted-foreground text-xs">
-              The time after which your order will expire if not filled.
-            </AccordionContent>
-          </AccordionItem>
           <Separator className="my-2" />
            <div className="flex justify-between items-center py-2 text-sm">
             <span>Min. Received</span>
-            <span className="font-mono">0.869412 nSTX</span>
+            <span className="font-mono">{(nStxReceived * 0.995).toFixed(6)} nSTX</span>
           </div>
            <div className="flex justify-between items-center py-2 text-sm">
             <span>Network Fee</span>
