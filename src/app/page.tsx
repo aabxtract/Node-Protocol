@@ -79,8 +79,8 @@ export default function Home() {
               Advanced Staking Ecosystem
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Explore powerful features designed for both new and experienced
-              stakers.
+              Discover sophisticated staking solutions tailored for every level of experience, 
+              from beginners to advanced DeFi users.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
@@ -97,7 +97,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="flex-grow space-y-4">
                 <p className="text-muted-foreground">
-                  Maintain liquidity while your STX is staked. Use your staked assets across DeFi without unstaking.
+                  Keep your STX liquid while earning staking rewards. Access DeFi opportunities without compromising your staked position or waiting for unstaking periods.
                 </p>
                 {liquidStakingImage && (
                   <div className="relative aspect-video w-full overflow-hidden rounded-lg">
