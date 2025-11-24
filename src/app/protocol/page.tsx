@@ -26,10 +26,9 @@ export default function ProtocolPage() {
               <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                 The Future of Decentralized Staking on Bitcoin
               </h1>
-              <p className="mx-auto max-w-[700px] text-lg text-muted-foreground md:text-xl">
-                Node Protocol is a decentralized protocol built to enhance the
-                utility of Stacks through innovative staking solutions on the Bitcoin L2.
-              </p>
+                <p className="mx-auto max-w-[700px] text-lg text-muted-foreground md:text-xl">
+                Decentralized staking protocol on Bitcoin L2, enhancing Stacks utility through innovative solutions.
+                </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Button size="lg" className="w-full sm:w-auto" asChild>
                   <Link href="/">

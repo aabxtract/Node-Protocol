@@ -21,7 +21,7 @@ export default function Header() {
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center gap-2">
             <Logo className="h-8 w-8 text-primary" />
-            <span className="hidden sm:inline-block font-headline text-lg font-bold">
+            <span className="hidden sm:inline-block font-semibold text-xl tracking-tight text-foreground">
               Node Protocol
             </span>
           </Link>
